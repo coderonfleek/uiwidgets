@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Accordion</title>
+
+    <style>
+        .showSection {
+            display: block;
+        }
+
+        #accordion {
+            width: 400px;
+        }
+
+        .label {
+            border: 1px solid red;
+            padding: 5px;
+            font-size: 16px;
+            font-family: Arial;
+            color: blue;
+        }
+
+        .content {
+            border: 1px solid #000;
+            /* padding: 5px; */
+            font-size: 14px;
+            font-family: serif;
+            height: 0px;
+            overflow: hidden;
+            opacity: 0;
+            transition: height 1s, opacity 1s;
+        }
+
+        .active {
+            height: 100px;
+            padding: 5px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="accordion">
+        <div class="label">Label 1</div>
+        <div class="content">
+            <p>
+
+                Do you want to be able to build interactive components and webapps, from scratch, without copy-pasting other people’s code?
+                Do you want to be confident in JavaScript, remember JavaScript by heart, and make things you’re proud of?
+            </p>
+        </div>
+
+        <div class="label">Label 2</div>
+        <div class="content">
+            <p>
+
+                Do you want to feel like a real developer who can solve complex problems? Do you want to learn to think like one and be able
+                to show off your abilities in job interviews?
+            </p>
+        </div>
+
+        <div class="label">Label 3</div>
+        <div class="content">
+            <p>
+
+                Build 20 real-world components—designed by four designers—from scratch with guided step-by-step instructions.
+            </p>
+        </div>
+    </div>
+
+    <!-- Script tag had to be put here for DOM to load first -->
+    <script>
+        //Use event bubbling
+        var accordion = document.getElementById('accordion');
+        accordion.onclick = function (event) {
+
+            //Find if there is any currently opened tab
+            var opened = document.getElementsByClassName('active')[0];
+            if (opened) {
+                opened.classList.remove('active');
+            }
+
+
+            // NB: opend is a JS collection and not an array so you can't use foreach on it
+            //if (opened.length > 0) {
+            //     opened.forEach(element => {
+            //         element.classList.remove('active');
+            //     });
+            // }
+            console.log(event.target);
+
+            var clicked = event.target;
+
+            var content = clicked.nextElementSibling;
+
+            if (content.style.display == "block") {
+                //content.style.display = "none"
+                content.style.opacity = 0;
+
+                //Remove the active class
+                content.classList.remove('active');
+            } else {
+                //content.style.display = "block";
+                //Add the active class
+                content.classList.add('active');
+
+                setTimeout(() => {
+                    content.style.opacity = 1;
+                }, 100);
+
+            }
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>

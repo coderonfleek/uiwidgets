@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Off Canvas Menu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #menu {
+            width: 300px;
+            height: inherit;
+            background-color: blueviolet;
+            color: beige;
+            margin-left: -300px;
+            float: left;
+        }
+
+        .animate-margin-left {
+            transition: margin-left 1s ease;
+        }
+
+        #menuLink {}
+    </style>
+
+    <script>
+        var opened = false;
+
+        function openMenu() {
+
+            if (!opened) {
+                menu.style.marginLeft = 0 + "px";
+
+                opened = true;
+                link.innerHTML = "Close Menu";
+            } else {
+                menu.style.marginLeft = -300 + "px";
+                opened = false;
+                link.innerHTML = "Open Menu";
+            }
+
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="menu" class="animate-margin-left">
+        <h2>Side Menu</h2>
+    </div>
+
+    <div id="menuLink">
+        <p>
+            <a href="#" onclick="openMenu()" id="link">Open Menu</a>
+        </p>
+    </div>
+
+</body>
+
+</html>
