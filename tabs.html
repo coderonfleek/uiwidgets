@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tabs</title>
+
+    <style>
+        #tabs {
+            width: 608px
+        }
+
+        #panels {
+            clear: both;
+        }
+
+        .panel {
+            width: 150px;
+            border: 1px solid #ccc;
+            float: left;
+            text-align: center;
+            height: 50px;
+            line-height: 3.5;
+            background: #000;
+            color: white;
+        }
+
+        #tabContent {
+            border: 1px solid;
+            height: 300px;
+            overflow: auto
+        }
+
+        .content {
+            display: none;
+        }
+
+        .displayContent {
+            display: block
+        }
+
+        .currentTab {
+            background: #fff;
+            color: #000;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="tabs">
+        <div id="panels">
+            <div class="panel currentTab" id="panel1">Tab 1</div>
+            <div class="panel" id="panel2">Tab 2</div>
+            <div class="panel" id="panel3">Tab 3</div>
+            <div class="panel" id="panel4">Tab 4</div>
+        </div>
+        <div id="tabContent">
+            <div class="content displayContent" id="content1">Content 1</div>
+            <div class="content" id="content2">Content 2</div>
+            <div class="content" id="content3">Content 3</div>
+            <div class="content" id="content4">Content 4</div>
+        </div>
+    </div>
+
+    <script>
+        panels.onclick = function (event) {
+
+            //Get the panel that was click
+            var clickedTab = event.target;
+
+            console.log(clickedTab.id);
+
+            //Get the position from the id
+            var tabPosition = clickedTab.id.charAt(5);
+
+            console.log(tabPosition);
+
+            //Hide any currently shown content and currently highlighted tab
+            document.querySelector('.displayContent').classList.remove('displayContent');
+            document.querySelector('.currentTab').classList.remove('currentTab');
+
+
+            //Show the new contentand highlight the new tab
+            document.getElementById('content' + tabPosition).classList.add('displayContent');
+            clickedTab.classList.add('currentTab');
+
+        }
+    </script>
+
+</body>
+
+</html>
