@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carousel</title>
+
+    <style>
+        #carousel {
+            width: 625px;
+            height: auto;
+            padding: 10px;
+            border: 1px solid;
+        }
+
+        #controls {
+            padding: 5px;
+        }
+
+        #thumbs {
+            height: 160px;
+            width: 100%;
+            overflow: hidden
+        }
+
+        #slide {
+            height: 152px;
+            padding: 5px;
+            clear: both;
+            width: 2000px;
+        }
+
+        .thumb {
+            height: 150px;
+            border: 1px solid;
+            width: 200px;
+            float: left;
+            margin-right: 5px;
+        }
+
+        .animated {
+            transition: margin-left 1s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="carousel">
+        <div id="controls">
+            <a href="#" id="moveLeft">Left</a>&nbsp;|&nbsp;
+            <a href="#" id="moveRight">Right</a>
+        </div>
+        <div id="thumbs">
+            <div id="slide" class="animated">
+
+                <div class="thumb">1</div>
+                <div class="thumb">2</div>
+                <div class="thumb">3</div>
+                <div class="thumb">4</div>
+                <div class="thumb">5</div>
+                <div class="thumb">6</div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //Get the full length of the slide
+        //Width of all thumbs and their margins + slide horizontal padding
+        var thumbWidthAndMarginRight = 205;
+
+        var totalSlideHorizontalPadding = 2 * 5;
+
+        var totalSlideWidth = (slide.children.length * thumbWidthAndMarginRight) + totalSlideHorizontalPadding;
+
+        console.log(totalSlideWidth);
+
+
+        moveLeft.onclick = function (params) {
+            //Get the actual numeric value of the left margin
+
+            var marginLeft = Number(slide.style.marginLeft.slice(0, -2)); //slice removes the px portion
+            slide.style.marginLeft = (marginLeft - 205) + "px";
+
+            // if (marginLeft > 0) {
+            //     slide.style.marginLeft = (marginLeft - 200) + "px";
+            // }
+
+        }
+
+        moveRight.onclick = function (params) {
+            //Get the actual numeric value of the left margin
+
+            var marginLeft = Number(slide.style.marginLeft.slice(0, -2));
+
+            //Don't move right if first thumb is the first visible thumb
+            if (marginLeft != 0) {
+                slide.style.marginLeft = (marginLeft + 205) + "px";
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

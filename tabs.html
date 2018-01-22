@@ -19,6 +19,8 @@
         .panel {
             width: 150px;
             border: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #fff;
             float: left;
             text-align: center;
             height: 50px;
@@ -29,6 +31,7 @@
 
         #tabContent {
             border: 1px solid;
+            border-top: 1px solid #fff;
             height: 300px;
             overflow: auto
         }
@@ -85,7 +88,7 @@
             document.querySelector('.currentTab').classList.remove('currentTab');
 
 
-            //Show the new contentand highlight the new tab
+            //Show the new contentand highlight the new
             document.getElementById('content' + tabPosition).classList.add('displayContent');
             clickedTab.classList.add('currentTab');
 
